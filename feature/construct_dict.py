@@ -30,5 +30,12 @@ def construct_dict(class_features_dir='./outputs/features',target_wordset_path =
         file_util.save_wordsdict(target_wordset_path,wordsdict)
     return wordsdict
 
+#获取词语编号
+def getindexofword(term,wordsdict):
+    for index in wordsdict:
+        if term == wordsdict[index]:
+            return index
+
+
 
 

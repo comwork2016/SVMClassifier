@@ -1,27 +1,10 @@
 # -*- coding: UTF-8 -*-
 '''利用卡方检验进行特征提取'''
 
-def calc_termfrequency(segspath):
-    '计算文件中的词频'
-    fr = open(segspath, 'r')
-    data = fr.read().decode('utf-8')
-    fr.close()
-    doctf = {}
-    segs = data.split('\n')
-    for seg in segs:
-        seg = seg.strip(' \n\t')
-        if len(seg) == 0: #词语长度>0
-            continue
-        times = doctf.get(seg)
-        if times:
-            doctf[seg] = times + 1
-        else:
-            doctf[seg] = 1
-    return doctf
-
 def getfiledic(filepath,classlable,dic):
     '对每个文件计算生成文档数目词典'
-    doctf = calc_termfrequency(filepath)
+    import doc_statics
+    doctf = doc_statics.calc_termfrequency(filepath)
     for term in doctf:
         if term in dic:
             if classlable in dic[term]:
@@ -30,7 +13,6 @@ def getfiledic(filepath,classlable,dic):
                 dic[term][classlable] = 1
         else:
             dic[term] = {classlable:1}
-
 
 def construct_tmp_term_filenum_dic(segmentsdir,target_dicpath='',writeTofile=False):
     '获取保存包含词语文档个数的临时词典，卡方检验时需要用到   \
@@ -80,7 +62,7 @@ def calcchi_for_term(term,classlabel_num_dic,class_filenum_dic,class_term_chisco
         else:
             class_term_chiscore[classlabel][term] = x2
 
-def calc_chiscore(chidic_path='./outputs/chidic.dict',classfilenumpath='./outputs/classfilenum.txt',target_filepath='./outputs/chiscore.dict',writeToFile=False):
+def calc_chiscore(chidic_path='./outputs/termfilenum.txt',classfilenumpath='./outputs/classfilenum.txt',target_filepath='./outputs/chiscore.dict',writeToFile=False):
     '计算每个词语在每个分类下的卡方值   \
     class{term:score,....}'
     class_term_chiscore = {}

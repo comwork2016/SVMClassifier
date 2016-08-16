@@ -27,7 +27,7 @@ def read_term_filenum_dic(filepath):
             filenum = int(str_split_class_filenum[1])
             dic[term][classlabel] = filenum
     fr.close()
-    print 'read chi dic done!'
+    print 'read term filenum dic done!'
     return dic
 
 #保存文件数目字典
@@ -100,5 +100,39 @@ def read_wordsdict(filepath):
     fr = open(filepath,'r')
     for line in fr.readlines():
         iw = line.strip('\n\t').split('\t')
-        wordsdict[iw[0]] = iw[1]
+        wordsdict[int(iw[0])] = iw[1]
     return wordsdict
+
+#保存词频
+def save_termfrequency(filepath,dict):
+    fr = open(filepath,'w')
+    for term in dict:
+        fr.write((term+'\t'+str(dict[term])+'\n').encode('utf-8'))
+    fr.close()
+    print 'save tf done!'
+
+#读取词频
+def read_termfrequency(filepath):
+    dict = {}
+    fr = open(filepath,'r')
+    for line in fr.readlines():
+        tf = line.strip('\n\t').split('\t')
+        dict[tf[0]] = int(tf[1])
+    return dict
+
+#保存tf-idf文档
+def save_tfidf(filepath,dict):
+    fr = open(filepath,'w')
+    for term in dict:
+        fr.write((term+'\t'+str(dict[term])+'\n').encode('utf-8'))
+    fr.close()
+    print 'save tf done!'
+
+#读取词频
+def read_tfidf(filepath):
+    dict = {}
+    fr = open(filepath,'r')
+    for line in fr.readlines():
+        tf = line.strip('\n\t').split('\t')
+        dict[tf[0]] = float(tf[1])
+    return dict

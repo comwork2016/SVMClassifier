@@ -106,7 +106,9 @@ def extract_feature(topN = 5000,target_dir='./outputs/features'):
         target_feature_path = os.path.join(target_dir,classlabel)
         target_feature_path = target_feature_path + '.feature'
         term_chisocre = class_term_chiscore[classlabel]
-        sorted_term_chiscore = sorted(term_chisocre.iteritems(),key=lambda d:d[1],reverse=True)\
+        sorted_term_chiscore = sorted(term_chisocre.iteritems(),key=lambda d:d[1],reverse=True)
+        #保存所有的特征项
+        file_util.save_featurelist(target_feature_path + '.all',sorted_term_chiscore)
         #保存topN个特征作为特征值
         file_util.save_featurelist(target_feature_path,sorted_term_chiscore[0:topN])
     print 'feature extract done!'

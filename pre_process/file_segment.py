@@ -35,11 +35,11 @@ def writeSegmentsToFile(filepath,target_filepath,nlpir,stop_term_set):
                 item = u'@HTTP'
             if re.match("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$", item): #邮箱地址
                 item = u'@EMAIL'
-            if seg[1] == u'numeral':
+            if item == u'numeral':
                 item = '@NUMBER'  #将数字统一替换成@NUMBER
-            if seg[1] == u'string':
+            if item == u'string':
                 item = '@STRING'
-            if seg[1] == u'time word':
+            if item == u'time word':
                 item = '@DATA'
             frsegs.write((item +'\n').encode('utf-8')) #以utf-8编码保存
     frsegs.close()

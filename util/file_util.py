@@ -83,5 +83,6 @@ def save_featurelist(filepath,sorted_term_chiscore):
     fr = open(filepath, 'w')
     for term_score_tuple in sorted_term_chiscore:
         term = term_score_tuple[0]
-        fr.write((term.strip('\t') + "\n").encode('utf-8'))
+        chiscore = term_score_tuple[1]
+        fr.write(((term+'\t'+str(chiscore)).strip('\t') + "\n").encode('utf-8'))
     fr.close()

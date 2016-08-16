@@ -87,3 +87,9 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+#ignore corpus file
+./corpus/
+./outputs
+./train
+./test

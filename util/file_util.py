@@ -86,3 +86,19 @@ def save_featurelist(filepath,sorted_term_chiscore):
         chiscore = term_score_tuple[1]
         fr.write(((term+'\t'+str(chiscore)).strip('\t') + "\n").encode('utf-8'))
     fr.close()
+
+#保存词典
+def save_wordsdict(target_wordset_path,wordsdict):
+    fr = open(target_wordset_path,'w')
+    for index in wordsdict:
+        fr.write((str(index)+'\t'+wordsdict[index]+'\n').encode('utf-8'))
+    fr.close()
+
+#读取词典
+def read_wordsdict(filepath):
+    wordsdict = {}
+    fr = open(filepath,'r')
+    for line in fr.readlines():
+        iw = line.strip('\n\t').split('\t')
+        wordsdict[iw[0]] = iw[1]
+    return wordsdict

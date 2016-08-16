@@ -11,7 +11,8 @@ if __name__ == '__main__':
     #calc_filenum.calc_filenum('./train','./outputs/classfilenum.txt',True)
     #feature_extraction.construct_tmp_term_filenum_dic('./train','./outputs/chidic.dict',True)
     #feature_extraction.calc_chiscore(writeToFile=True)
-    feature_extraction.extract_feature()
+    #feature_extraction.extract_feature()
+    #construct_dict.construct_dict('./outputs/features','./outputs/words.dict',True)
 
 
 

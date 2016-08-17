@@ -35,7 +35,7 @@ def construct_tmp_term_filenum_dic(segmentsdir,target_dicpath='',writeTofile=Fal
     if writeTofile:
         from util import file_util
         file_util.save_term_filenum_dic(target_dicpath,tmp_term_filenum_dic)
-        print 'construct tmp dict done!'
+        print 'construct term file number done!'
     return tmp_term_filenum_dic
 
 def calcchi_for_term(term,classlabel_num_dic,class_filenum_dic,class_term_chiscore):

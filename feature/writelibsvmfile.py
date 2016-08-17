@@ -14,13 +14,13 @@ def writelibsvminputfile(tfidf_dirpath,wordsdict_filepath,target_filepath):
             filepath = os.path.join(classpath, filename)
             doc_tfidf = file_util.read_tfidf(filepath)
             # 将字典中的词语保存
-            line = classname+'\t'
+            line = classname[1:]+'\t' #去掉类名前面的字母
             for index in wordsdict:
                 word = wordsdict[index]
                 if word in doc_tfidf:
                     line = line + str(index) + ':' + str(doc_tfidf[word]) + '\t'
-                else:
-                    line = line + str(index) + ':' + str(0) + '\t'
+                #else:
+                    #line = line + str(index) + ':' + str(0) + '\t'
             line = line.strip('\t') + '\n'
             fr.write(line.encode('utf-8'))
             print 'write file',filepath
